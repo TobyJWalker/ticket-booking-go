@@ -38,3 +38,10 @@ A Go project must be initialised before any Go code can be ran. This is done by 
 go mod init <project-name>
 ```
 
+## Executing Go code
+
+Go code can be executed by running the following command:
+
+```bash
+go run <file-name>.go
+```
