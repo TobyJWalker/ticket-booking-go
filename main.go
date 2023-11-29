@@ -34,8 +34,8 @@ func main() {
 	var emailAddress string
 	var userTickets uint
 
-	// loop to keep asking for bookings whilst bookings are available
-	for remainingTickets > 0{
+	// loop to keep asking for bookings
+	for{
 
 		// Get user input
 		fmt.Print("\nPlease enter your first name: ")
@@ -81,6 +81,15 @@ func main() {
 		// Display list of booking first names
 		fmt.Println("\nBookings:")
 		fmt.Printf("%s\n", firstNames)
+
+		// Check if there are any remaining tickets (var not needed, for edu purposes)
+		noTicketsRemaining := remainingTickets == 0
+
+		// Stop the program if there are no tickets remaining
+		if noTicketsRemaining {
+			fmt.Println("\nThere are no more tickets remaining. Thank you for your interest!")
+			break // break out of the loop
+		}
 		
 	}
 }
