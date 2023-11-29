@@ -7,10 +7,10 @@ func main() {
 
 	// Initialise globals
 	const CONFERENCE_NAME = "Go Conference"
-	const CONFERENCE_TICKETS = 50
+	const CONFERENCE_TICKETS int8 = 50
 
 	// Initialise variables
-	var remainingTickets = CONFERENCE_TICKETS
+	var remainingTickets int8 = CONFERENCE_TICKETS
 
 	// Display value data types
 	fmt.Printf("\n\nConference name is of type: %T\n", CONFERENCE_NAME)
@@ -20,14 +20,14 @@ func main() {
 	// Display welcome message and ticket information
 	fmt.Printf("Welcome to %s booking application.\n", CONFERENCE_NAME)
 	fmt.Printf("There are %d total spaces available and %d remaining.\n", CONFERENCE_TICKETS, remainingTickets)
-	fmt.Println("Get your tickets here to attend our conference!\n")
+	fmt.Println("Get your tickets here to attend our conference!")
 
 	// Initialise user input variable
 	var userName string = ""
 	var userTickets int = 0
 
 	// Get user input
-	fmt.Print("Please enter your name: ")
+	fmt.Print("\nPlease enter your name: ")
 	fmt.Scanln(&userName)
 
 	fmt.Print("Please enter the number of tickets you would like to purchase: ")
