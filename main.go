@@ -22,8 +22,8 @@ func main() {
 	fmt.Printf("There are %d total spaces available and %d remaining.\n", CONFERENCE_TICKETS, remainingTickets)
 	fmt.Println("Get your tickets here to attend our conference!")
 
-	// Initialise booking array
-	var bookings [50]string
+	// Initialise booking slice
+	var bookings []string
 
 	// Initialise user input variable
 	var firstName string
@@ -47,12 +47,12 @@ func main() {
 	// Calculate remaining tickets
 	remainingTickets = remainingTickets - userTickets
 
-	// Add name to bookings array
-	bookings[0] = firstName + " " + lastName
+	// Add name to bookings slice
+	bookings = append(bookings, firstName + " " + lastName)
 
-	// Display array information (for learning purposes)
-	fmt.Printf("\nBookings array is of type: %T\n", bookings)
-	fmt.Printf("Bookings array length is: %d\n", len(bookings))
+	// Display slice information (for learning purposes)
+	fmt.Printf("\nBookings slice is of type: %T\n", bookings)
+	fmt.Printf("Bookings slice length is: %d\n", len(bookings))
 
 	// Display user input
 	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
