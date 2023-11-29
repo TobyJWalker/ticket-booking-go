@@ -31,38 +31,42 @@ func main() {
 	var emailAddress string
 	var userTickets uint
 
-	// Get user input
-	fmt.Print("\nPlease enter your first name: ")
-	fmt.Scanln(&firstName) // & is used to get the memory address of the variable
+	// loop to keep asking for bookings
+	for {
 
-	fmt.Print("Please enter your last name: ")
-	fmt.Scanln(&lastName) 
+		// Get user input
+		fmt.Print("\nPlease enter your first name: ")
+		fmt.Scanln(&firstName) // & is used to get the memory address of the variable
 
-	fmt.Print("Please enter your email address: ")
-	fmt.Scanln(&emailAddress) 
+		fmt.Print("Please enter your last name: ")
+		fmt.Scanln(&lastName) 
 
-	fmt.Print("Please enter the number of tickets you would like to purchase: ")
-	fmt.Scanln(&userTickets)
+		fmt.Print("Please enter your email address: ")
+		fmt.Scanln(&emailAddress) 
 
-	// Calculate remaining tickets
-	remainingTickets = remainingTickets - userTickets
+		fmt.Print("Please enter the number of tickets you would like to purchase: ")
+		fmt.Scanln(&userTickets)
 
-	// Add name to bookings slice
-	bookings = append(bookings, firstName + " " + lastName)
+		// Calculate remaining tickets
+		remainingTickets = remainingTickets - userTickets
+
+		// Add name to bookings slice
+		bookings = append(bookings, firstName + " " + lastName)
 
 
-	// Display user input
-	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
-	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
+		// Display user input
+		fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
+		fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
 
-	// Display remaining tickets
-	fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
+		// Display remaining tickets
+		fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
 
-	// Display amount of bookings
-	fmt.Printf("\nThere are %d bookings.\n", len(bookings))
+		// Display amount of bookings
+		fmt.Printf("\nThere are %d bookings.\n", len(bookings))
 
-	// Display all bookings
-	fmt.Println("\nBookings:")
-	fmt.Printf("%s\n", bookings)
-
+		// Display all bookings
+		fmt.Println("\nBookings:")
+		fmt.Printf("%s\n", bookings)
+		
+	}
 }
