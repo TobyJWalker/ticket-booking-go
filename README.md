@@ -4,6 +4,8 @@ Ticket booking app for learning Golang. This is my first time using Golang and w
 
 It will make use of benefits of Go such as concurrency and parallelism, which can be typically found as problems which need be tackled in a ticket booking system. For example, a user may be able to book a ticket while another user is also booking a ticket. This will require that we make sure no two users can book the same ticket at the same time.
 
+This readme will also serve as a reference for myself to look back on when I need to remember how to do something in Go.
+
 
 **Features that will be explored include:**
 - Common Data Types
