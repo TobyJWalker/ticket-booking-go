@@ -1,6 +1,9 @@
 package main // Main package
 
-import "fmt" // Import fmt package for printing etc
+import (
+	"fmt"     // Import fmt package for printing etc
+	"strings" // Import strings package for string manipulation
+)
 
 // Main function
 func main() {
@@ -31,8 +34,8 @@ func main() {
 	var emailAddress string
 	var userTickets uint
 
-	// loop to keep asking for bookings
-	for {
+	// loop to keep asking for bookings whilst bookings are available
+	for remainingTickets > 0{
 
 		// Get user input
 		fmt.Print("\nPlease enter your first name: ")
@@ -64,9 +67,20 @@ func main() {
 		// Display amount of bookings
 		fmt.Printf("\nThere are %d bookings.\n", len(bookings))
 
-		// Display all bookings
+		// Get a list of the first names of bookings (for privacy)
+		firstNames := []string{}
+
+		for _, booking := range bookings { // _ is used to ignore the index value given with range
+
+			// Get the first name of the booking and add to slice
+			var splitNames = strings.Split(booking, " ")
+			firstNames = append(firstNames, splitNames[0])
+			
+		}
+
+		// Display list of booking first names
 		fmt.Println("\nBookings:")
-		fmt.Printf("%s\n", bookings)
+		fmt.Printf("%s\n", firstNames)
 		
 	}
 }
