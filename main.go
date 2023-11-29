@@ -23,17 +23,26 @@ func main() {
 	fmt.Println("Get your tickets here to attend our conference!")
 
 	// Initialise user input variable
-	var userName string = ""
-	var userTickets int = 0
+	var userFirstName string
+	var userLastName string
+	var emailAddress string
+	var userTickets int
 
 	// Get user input
-	fmt.Print("\nPlease enter your name: ")
-	fmt.Scanln(&userName)
+	fmt.Print("\nPlease enter your first name: ")
+	fmt.Scanln(&userFirstName) // & is used to get the memory address of the variable
+
+	fmt.Print("Please enter your last name: ")
+	fmt.Scanln(&userLastName) 
+
+	fmt.Print("Please enter your email address: ")
+	fmt.Scanln(&emailAddress) 
 
 	fmt.Print("Please enter the number of tickets you would like to purchase: ")
-	fmt.Scanln(&userTickets)
+	fmt.Scanln(&userTickets) 
 
 	// Display user input
-	fmt.Printf("Thank you %s, you have purchased %d tickets.\n", userName, userTickets)
+	fmt.Printf("Thank you %s, you have booked %d tickets.\n", userFirstName, userTickets)
+	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
 
 }
