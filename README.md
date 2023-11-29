@@ -23,7 +23,7 @@ It will make use of benefits of Go such as concurrency and parallelism, which ca
 
 Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.
 
-Go code is organised into packages. A package is a collection of source files in the same directory that are compiled together. Functions, types, variables, and constants defined in one source file are visible to all other source files within the same package. All code must be included in a package.
+Go code is organised into packages. A package is a collection of source files in the same directory that are compiled together. Functions, types, variables, and constants defined in one source file are visible to all other source files within the same package. All code must be included in a package. An example of this is `Print` from the `fmt` package. This is used to print to the console.
 
 Go is a compiled language. Source code is compiled into a binary file that can be executed on a machine. This is in contrast to interpreted languages, which are not compiled but rather read and executed by an interpreter.
 
