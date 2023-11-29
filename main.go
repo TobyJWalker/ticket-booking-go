@@ -23,7 +23,7 @@ func main() {
 	fmt.Println("Get your tickets here to attend our conference!")
 
 	// Initialise booking slice
-	var bookings []string
+	var bookings []string // specify a number in the [] to create an array (fixed size)
 
 	// Initialise user input variable
 	var firstName string
@@ -50,9 +50,6 @@ func main() {
 	// Add name to bookings slice
 	bookings = append(bookings, firstName + " " + lastName)
 
-	// Display slice information (for learning purposes)
-	fmt.Printf("\nBookings slice is of type: %T\n", bookings)
-	fmt.Printf("Bookings slice length is: %d\n", len(bookings))
 
 	// Display user input
 	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
