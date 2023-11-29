@@ -19,6 +19,13 @@ It will make use of benefits of Go such as concurrency and parallelism, which ca
 - Goroutines
 
 
+## About Go
+
+Go is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency.
+
+Go code is organised into packages. A package is a collection of source files in the same directory that are compiled together. Functions, types, variables, and constants defined in one source file are visible to all other source files within the same package. All code must be included in a package.
+
+
 ## Initialising a Go project
 
 A Go project must be initialised before any Go code can be ran. This is done by creating a `go.mod` file in the root directory of the project. This can be done by running the following command:
