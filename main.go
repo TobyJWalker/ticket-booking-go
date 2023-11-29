@@ -22,18 +22,21 @@ func main() {
 	fmt.Printf("There are %d total spaces available and %d remaining.\n", CONFERENCE_TICKETS, remainingTickets)
 	fmt.Println("Get your tickets here to attend our conference!")
 
+	// Initialise booking array
+	var bookings [50]string
+
 	// Initialise user input variable
-	var userFirstName string
-	var userLastName string
+	var firstName string
+	var lastName string
 	var emailAddress string
 	var userTickets uint
 
 	// Get user input
 	fmt.Print("\nPlease enter your first name: ")
-	fmt.Scanln(&userFirstName) // & is used to get the memory address of the variable
+	fmt.Scanln(&firstName) // & is used to get the memory address of the variable
 
 	fmt.Print("Please enter your last name: ")
-	fmt.Scanln(&userLastName) 
+	fmt.Scanln(&lastName) 
 
 	fmt.Print("Please enter your email address: ")
 	fmt.Scanln(&emailAddress) 
@@ -44,8 +47,15 @@ func main() {
 	// Calculate remaining tickets
 	remainingTickets = remainingTickets - userTickets
 
+	// Add name to bookings array
+	bookings[0] = firstName + " " + lastName
+
+	// Display array information (for learning purposes)
+	fmt.Printf("\nBookings array is of type: %T\n", bookings)
+	fmt.Printf("Bookings array length is: %d\n", len(bookings))
+
 	// Display user input
-	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", userFirstName, userTickets)
+	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
 	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
 
 	// Display remaining tickets
