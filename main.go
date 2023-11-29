@@ -7,10 +7,10 @@ func main() {
 
 	// Initialise globals
 	const CONFERENCE_NAME = "Go Conference"
-	const CONFERENCE_TICKETS int8 = 50
+	const CONFERENCE_TICKETS int = 50
 
 	// Initialise variables
-	var remainingTickets int8 = CONFERENCE_TICKETS
+	var remainingTickets uint = 50
 
 	// Display value data types
 	fmt.Printf("\n\nConference name is of type: %T\n", CONFERENCE_NAME)
@@ -26,7 +26,7 @@ func main() {
 	var userFirstName string
 	var userLastName string
 	var emailAddress string
-	var userTickets int
+	var userTickets uint
 
 	// Get user input
 	fmt.Print("\nPlease enter your first name: ")
@@ -39,7 +39,10 @@ func main() {
 	fmt.Scanln(&emailAddress) 
 
 	fmt.Print("Please enter the number of tickets you would like to purchase: ")
-	fmt.Scanln(&userTickets) 
+	fmt.Scanln(&userTickets)
+
+	// Calculate remaining tickets
+	remainingTickets = remainingTickets - int8(userTickets)
 
 	// Display user input
 	fmt.Printf("Thank you %s, you have booked %d tickets.\n", userFirstName, userTickets)
