@@ -42,10 +42,13 @@ func main() {
 	fmt.Scanln(&userTickets)
 
 	// Calculate remaining tickets
-	remainingTickets = remainingTickets - int8(userTickets)
+	remainingTickets = remainingTickets - userTickets
 
 	// Display user input
-	fmt.Printf("Thank you %s, you have booked %d tickets.\n", userFirstName, userTickets)
+	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", userFirstName, userTickets)
 	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
+
+	// Display remaining tickets
+	fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
 
 }
