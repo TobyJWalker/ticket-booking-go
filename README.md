@@ -25,6 +25,10 @@ Go is a statically typed, compiled programming language designed at Google by Ro
 
 Go code is organised into packages. A package is a collection of source files in the same directory that are compiled together. Functions, types, variables, and constants defined in one source file are visible to all other source files within the same package. All code must be included in a package.
 
+Go is a compiled language. Source code is compiled into a binary file that can be executed on a machine. This is in contrast to interpreted languages, which are not compiled but rather read and executed by an interpreter.
+
+Go code needs to have a declaration of the main package and main function. The main function is the entry point of the program. The main package tells the Go compiler that the package should compile as an executable program instead of a shared library.
+
 
 ## Initialising a Go project
 
