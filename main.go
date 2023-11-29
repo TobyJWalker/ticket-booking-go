@@ -50,6 +50,13 @@ func main() {
 		fmt.Print("Please enter the number of tickets you would like to purchase: ")
 		fmt.Scanln(&userTickets)
 
+		// Check if there are enough tickets remaining
+		if userTickets > remainingTickets {
+			fmt.Printf("\nSorry, there are only %d tickets remaining.\n", remainingTickets)
+			fmt.Printf("Please try again.\n")
+			continue // continue to the next iteration of the loop
+		}
+
 		// Calculate remaining tickets
 		remainingTickets = remainingTickets - userTickets
 
