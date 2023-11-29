@@ -19,3 +19,11 @@ It will make use of benefits of Go such as concurrency and parallelism, which ca
 - Goroutines
 
 
+## Initialising a Go project
+
+A Go project must be initialised before any Go code can be ran. This is done by creating a `go.mod` file in the root directory of the project. This can be done by running the following command:
+
+```bash
+go mod init <project-name>
+```
+
