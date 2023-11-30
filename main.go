@@ -5,16 +5,16 @@ import (
 	"strings" // Import strings package for string manipulation
 )
 
+// Package level constants
+const CONFERENCE_NAME = "Go Conference"
+const CONFERENCE_TICKETS uint = 50
+
+// Package level variables
+var remainingTickets uint = 50
+var bookings []string // specify a number in the [] to create an array (fixed size)
+
 // Main function
 func main() {
-
-	// Initialise globals
-	const CONFERENCE_NAME = "Go Conference"
-	const CONFERENCE_TICKETS uint = 50
-
-	// Initialise variables
-	var remainingTickets uint = 50
-	var bookings []string // specify a number in the [] to create an array (fixed size)
 
 	// Display welcome message and ticket information
 	greetUsers(CONFERENCE_NAME, remainingTickets, CONFERENCE_TICKETS)
@@ -32,21 +32,21 @@ func main() {
 		firstName, lastName, emailAddress, userTickets = getUserDetails()
 
 		// Validate user input
-		if !isValidInput(firstName, lastName, emailAddress, userTickets, int(remainingTickets)) {
+		if !isValidInput(firstName, lastName, emailAddress, userTickets) {
 			continue // continue to the next iteration of the loop
 		}
 
-		// Get remaining tickets
-		remainingTickets = getRemainingTickets(userTickets, remainingTickets)
+		// Calculate remaining tickets
+		calculateRemainingTickets(userTickets)
 
 		// Process booking
-		bookings = processBooking(firstName, lastName, emailAddress, userTickets, bookings)
+		processBooking(firstName, lastName, emailAddress, userTickets)
 
 		// Display remaining tickets
 		fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
 
 		// Display bookings
-		displayBookings(bookings)
+		displayBookings()
 		
 	}
 }
@@ -85,7 +85,7 @@ func getUserDetails() (string, string, string, int) {
 }
 
 // Function to validate user input, tell them what is wrong and return a boolean
-func isValidInput(firstName string, lastName string, emailAddress string, userTickets int, remainingTickets int) bool {
+func isValidInput(firstName string, lastName string, emailAddress string, userTickets int) bool {
 
 	// Name validation, must be at least 2 characters long
 	isInvalidName := len(firstName) < 2 || len(lastName) < 2
@@ -115,7 +115,7 @@ func isValidInput(firstName string, lastName string, emailAddress string, userTi
 	}
 
 	// Check if there are enough tickets remaining
-	if userTickets > remainingTickets {
+	if uint(userTickets) > remainingTickets {
 		fmt.Printf("\nSorry, there are only %d tickets remaining.\n", remainingTickets)
 		fmt.Printf("Please try again.\n")
 		return false
@@ -125,12 +125,12 @@ func isValidInput(firstName string, lastName string, emailAddress string, userTi
 }
 
 // Function to get remaining tickets
-func getRemainingTickets(userTickets int, totalTickets uint) uint {
-	return totalTickets - uint(userTickets)
+func calculateRemainingTickets(userTickets int) {
+	remainingTickets = remainingTickets - uint(userTickets)
 }
 
 // Function to process booking
-func processBooking(firstName string, lastName string, emailAddress string, userTickets int, bookings []string) []string {
+func processBooking(firstName string, lastName string, emailAddress string, userTickets int) {
 
 	// Add name to bookings slice
 	bookings = append(bookings, firstName + " " + lastName)
@@ -138,12 +138,10 @@ func processBooking(firstName string, lastName string, emailAddress string, user
 	// Display user input
 	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
 	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
-
-	return bookings
 }
 
 // Function to display bookings
-func displayBookings(bookings []string) {
+func displayBookings() {
 
 	// Get a list of the first names of bookings (for privacy)
 	firstNames := []string{}
