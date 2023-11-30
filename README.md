@@ -42,8 +42,14 @@ go mod init <project-name>
 
 ## Executing Go code
 
-Go code can be executed by running the following command:
+Go code is executed by running one of two commands. For one-file projects, the following command can be used:
 
 ```bash
 go run <file-name>.go
+```
+
+For multi-file projects, the following command can be used:
+
+```bash
+go run .
 ```
