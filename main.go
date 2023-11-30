@@ -31,7 +31,7 @@ func main() {
 		var firstName string
 		var lastName string
 		var emailAddress string
-		var userTickets uint
+		var userTickets int
 
 		// Get user input
 		fmt.Print("\nPlease enter your first name: ")
@@ -52,14 +52,14 @@ func main() {
 		}
 
 		// Check if there are enough tickets remaining
-		if userTickets > remainingTickets {
+		if userTickets > int(remainingTickets) {
 			fmt.Printf("\nSorry, there are only %d tickets remaining.\n", remainingTickets)
 			fmt.Printf("Please try again.\n")
 			continue // continue to the next iteration of the loop
 		}
 
 		// Calculate remaining tickets
-		remainingTickets = remainingTickets - userTickets
+		remainingTickets = remainingTickets - uint(userTickets)
 
 		// Add name to bookings slice
 		bookings = append(bookings, firstName + " " + lastName)
@@ -101,7 +101,7 @@ func greetUsers(conferenceName string, remainingTickets uint, totalTickets uint)
 }
 
 // Function to validate user input, tell them what is wrong and return a boolean
-func isValidDetails(firstName string, lastName string, emailAddress string, userTickets uint) bool {
+func isValidDetails(firstName string, lastName string, emailAddress string, userTickets int) bool {
 
 	// Name validation, must be at least 2 characters long
 	isInvalidName := len(firstName) < 2 || len(lastName) < 2
