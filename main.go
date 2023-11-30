@@ -14,6 +14,7 @@ func main() {
 
 	// Initialise variables
 	var remainingTickets uint = 50
+	var bookings []string // specify a number in the [] to create an array (fixed size)
 
 	// Display value data types
 	// fmt.Printf("\n\nConference name is of type: %T\n", CONFERENCE_NAME)
@@ -23,17 +24,14 @@ func main() {
 	// Display welcome message and ticket information
 	greetUsers(CONFERENCE_NAME, remainingTickets, CONFERENCE_TICKETS)
 
-	// Initialise booking slice
-	var bookings []string // specify a number in the [] to create an array (fixed size)
-
-	// Initialise user input variable
-	var firstName string
-	var lastName string
-	var emailAddress string
-	var userTickets uint
-
 	// loop to keep asking for bookings whilst tickets are available
-	for remainingTickets > 0{
+	for remainingTickets > 0 {
+
+		// Initialise user input variable
+		var firstName string
+		var lastName string
+		var emailAddress string
+		var userTickets uint
 
 		// Get user input
 		fmt.Print("\nPlease enter your first name: ")
@@ -48,30 +46,8 @@ func main() {
 		fmt.Print("Please enter the number of tickets you would like to purchase: ")
 		fmt.Scanln(&userTickets)
 
-		// Name validation, must be at least 2 characters long
-		isInvalidName := len(firstName) < 2 || len(lastName) < 2
-
-		if isInvalidName {
-			fmt.Printf("\nSorry, your name must be at least 2 characters long.\n")
-			fmt.Printf("Please try again.\n")
-			continue // continue to the next iteration of the loop
-		}
-
-		// Email validation, must contain an @ symbol
-		isInvalidEmail := !strings.Contains(emailAddress, "@")
-
-		if isInvalidEmail {
-			fmt.Printf("\nSorry, your email address must contain an @ symbol.\n")
-			fmt.Printf("Please try again.\n")
-			continue // continue to the next iteration of the loop
-		}
-
-		// Ticket validation, must be at least 1 ticket
-		isInvalidTicketNumber := userTickets < 1
-
-		if isInvalidTicketNumber {
-			fmt.Printf("\nSorry, you must book at least 1 ticket.\n")
-			fmt.Printf("Please try again.\n")
+		// Validate user input
+		if !isValidDetails(firstName, lastName, emailAddress, userTickets) {
 			continue // continue to the next iteration of the loop
 		}
 
@@ -122,4 +98,37 @@ func greetUsers(conferenceName string, remainingTickets uint, totalTickets uint)
 	fmt.Printf("Welcome to %s booking application.\n", conferenceName)
 	fmt.Printf("There are %d total spaces available and %d remaining.\n", totalTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend our conference!")
+}
+
+// Function to validate user input, tell them what is wrong and return a boolean
+func isValidDetails(firstName string, lastName string, emailAddress string, userTickets uint) bool {
+
+	// Name validation, must be at least 2 characters long
+	isInvalidName := len(firstName) < 2 || len(lastName) < 2
+
+	if isInvalidName {
+		fmt.Printf("\nSorry, your name must be at least 2 characters long.\n")
+		fmt.Printf("Please try again.\n")
+		return false
+	}
+
+	// Email validation, must contain an @ symbol
+	isInvalidEmail := !strings.Contains(emailAddress, "@")
+
+	if isInvalidEmail {
+		fmt.Printf("\nSorry, your email address must contain an @ symbol.\n")
+		fmt.Printf("Please try again.\n")
+		return false
+	}
+
+	// Ticket validation, must be at least 1 ticket
+	isInvalidTicketNumber := userTickets < 1
+
+	if isInvalidTicketNumber {
+		fmt.Printf("\nSorry, you must book at least 1 ticket.\n")
+		fmt.Printf("Please try again.\n")
+		return false
+	}
+
+	return true
 }
