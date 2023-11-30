@@ -49,9 +49,6 @@ func main() {
 		// Display remaining tickets
 		fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
 
-		// Display amount of bookings
-		fmt.Printf("\nThere are %d bookings.\n", len(bookings))
-
 		// Display bookings
 		displayBookings(bookings)
 		
