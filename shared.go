@@ -71,7 +71,7 @@ func sendTicket(booking UserData) {
 	var ticket string = fmt.Sprintf("%d tickets booked for %s %s.", booking.ticket_count, booking.first_name, booking.last_name)
 
 	// Simulate loading time
-	time.Sleep(10 * time.Second) // 2 seconds (number * time unit)
+	time.Sleep(20 * time.Second) // 2 seconds (number * time unit)
 
 	// Display ticket information
 	fmt.Println("\n#############################################")
