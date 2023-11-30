@@ -1,4 +1,4 @@
-package main
+package shared
 
 import (
 	"fmt"     // Import fmt package for printing etc
@@ -6,7 +6,7 @@ import (
 )
 
 // Function to validate user input, tell them what is wrong and return a boolean
-func isValidInput(firstName string, lastName string, emailAddress string, userTickets int) bool {
+func IsValidInput(firstName string, lastName string, emailAddress string, userTickets int, remainingTickets uint) bool {
 
 	// Name validation, must be at least 2 characters long
 	isInvalidName := len(firstName) < 2 || len(lastName) < 2
@@ -46,7 +46,7 @@ func isValidInput(firstName string, lastName string, emailAddress string, userTi
 }
 
 // Function to display bookings
-func displayBookings() {
+func DisplayBookings(bookings []string){
 
 	// Get a list of the first names of bookings (for privacy)
 	firstNames := []string{}
