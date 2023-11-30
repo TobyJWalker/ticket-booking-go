@@ -54,6 +54,7 @@ func main() {
 
 		// Display bookings
 		displayBookings()
+
 		
 	}
 }
@@ -113,4 +114,15 @@ func processBooking(firstName string, lastName string, emailAddress string, user
 	// Display user input
 	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
 	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
+
+	// Send ticket
+	sendTicket(userData)
+}
+
+// Function to simulate sending a ticket
+func sendTicket(booking UserData) {
+	var ticket string = fmt.Sprintf("%d tickets booked for %s %s.", booking.ticket_count, booking.first_name, booking.last_name)
+	fmt.Println("\n#############################################")
+	fmt.Printf("\nSending ticket to %s.\n\n%s", booking.email_address, ticket)
+	fmt.Println("\n#############################################")
 }
