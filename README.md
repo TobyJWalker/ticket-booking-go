@@ -54,7 +54,7 @@ For multi-file projects, the following command can be used:
 go run .
 ```
 
-## Threading in Go
+## Goroutines
 
 A big benefit of Go is concurrency. It is built so that concurrency is easy to implement. Using the keyword `go` before calling a function will start the function in a new thread, called a goroutine.
 
