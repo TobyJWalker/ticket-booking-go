@@ -53,3 +53,9 @@ For multi-file projects, the following command can be used:
 ```bash
 go run .
 ```
+
+## Threading in Go
+
+A big benefit of Go is concurrency. It is built so that concurrency is easy to implement. Using the keyword `go` before calling a function will start the function in a new thread, called a goroutine.
+
+A thread will run until it is finished, or the main thread finishes. To allow for synchronisation with the main thread, the `sync` package can be used to create a `Waitgroup`. A `Waitgroup` acts as a counter for the main thread so that it can keep track of whether all goroutines have finished. This is done by calling `wg.Add(1)` before starting a goroutine, and `wg.Done()` at the end of the goroutine. The main thread can then call `wg.Wait()` to wait for all goroutines to finish.
