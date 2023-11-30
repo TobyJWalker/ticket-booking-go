@@ -117,7 +117,7 @@ func processBooking(firstName string, lastName string, emailAddress string, user
 	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
 
 	// Send ticket
-	sendTicket(userData)
+	go sendTicket(userData) // go is used to run the function in a new thread
 }
 
 // Function to simulate sending a ticket
