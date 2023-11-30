@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"     // Import fmt package for printing etc
 	"strings" // Import strings package for string manipulation
+	"time"    // Import time package for time manipulation
 )
 
 // Function to validate user input, tell them what is wrong and return a boolean
@@ -61,4 +62,19 @@ func displayBookings(){
 	// Display list of booking first names
 	fmt.Println("\nBookings:")
 	fmt.Printf("%s\n", firstNames)
+}
+
+// Function to simulate sending a ticket
+func sendTicket(booking UserData) {
+
+	// Create ticket string
+	var ticket string = fmt.Sprintf("%d tickets booked for %s %s.", booking.ticket_count, booking.first_name, booking.last_name)
+
+	// Simulate loading time
+	time.Sleep(10 * time.Second) // 2 seconds (number * time unit)
+
+	// Display ticket information
+	fmt.Println("\n#############################################")
+	fmt.Printf("\nSending ticket to %s.\n\n%s", booking.email_address, ticket)
+	fmt.Println("\n\n#############################################")
 }
