@@ -1,8 +1,7 @@
 package main // Main package
 
 import (
-	"fmt"     // Import fmt package for printing etc
-	"strconv" // Import strconv package for string conversion
+	"fmt" // Import fmt package for printing etc
 )
 
 // Package level constants
@@ -11,7 +10,15 @@ const CONFERENCE_TICKETS uint = 50
 
 // Package level variables (not good practice but for the sake of this example)
 var remainingTickets uint = 50
-var bookings = make([]map[string]string, 0) // specify a number in the first [] and remove 0 to create an array (fixed size)
+var bookings = make([]UserData, 0) // specify a number in the first [] and remove 0 to create an array (fixed size)
+
+// Create a struct to hold user data
+type UserData struct{
+	first_name string
+	last_name string
+	email_address string
+	ticket_count int
+}
 
 // Main function
 func main() {
@@ -93,11 +100,12 @@ func calculateremainingTickets(userTickets int) {
 func processBooking(firstName string, lastName string, emailAddress string, userTickets int) {
 
 	// Create a map for user data
-	var userData = make(map[string]string)
-	userData["firstName"] = firstName
-	userData["lastName"] = lastName
-	userData["emailAddress"] = emailAddress
-	userData["ticketCount"] = strconv.Itoa(userTickets) // convert int to string
+	var userData = UserData {
+		first_name: firstName,
+		last_name: lastName,
+		email_address: emailAddress,
+		ticket_count: userTickets,
+	}
 
 	// Add name to bookings slice
 	bookings = append(bookings, userData)

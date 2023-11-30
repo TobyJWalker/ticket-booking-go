@@ -54,7 +54,7 @@ func displayBookings(){
 	for _, booking := range bookings { // _ is used to ignore the index value given with range
 
 		// Get the first name of the booking and add to slice
-		firstNames = append(firstNames, booking["firstName"])
+		firstNames = append(firstNames, booking.first_name)
 		
 	}
 
