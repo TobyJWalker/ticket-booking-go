@@ -2,6 +2,7 @@ package main // Main package
 
 import (
 	"fmt" // Import fmt package for printing etc
+	"sync"
 )
 
 // Package level constants
@@ -19,6 +20,9 @@ type UserData struct{
 	email_address string
 	ticket_count int
 }
+
+// Create wait group
+var wg = sync.WaitGroup{}
 
 // Main function
 func main() {
@@ -55,7 +59,8 @@ func main() {
 		// Display bookings
 		displayBookings()
 
-		
+		// Wait for threads
+		wg.Wait()
 	}
 }
 
@@ -114,6 +119,9 @@ func processBooking(firstName string, lastName string, emailAddress string, user
 	// Display user input
 	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
 	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
+
+	// Add thread to wait group
+	wg.Add(1)
 
 	// Send ticket
 	go sendTicket(userData) // go is used to run the function in a new thread

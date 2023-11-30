@@ -77,4 +77,7 @@ func sendTicket(booking UserData) {
 	fmt.Println("\n#############################################")
 	fmt.Printf("\nSending ticket to %s.\n\n%s", booking.email_address, ticket)
 	fmt.Println("\n\n#############################################")
+
+	// Mark thread as done
+	wg.Done()
 }
