@@ -62,6 +62,8 @@ Go has good cross-platform support. This means that a Go application can be buil
 env GOOS=<operating-system> GOARCH=<architecture> go build .
 ```
 
+`GOOS` and `GOARCH` are environment variables which can be used to set the platform to build the app for. If these are not included, it will use the current development platform the command is ran on.
+
 ## Goroutines
 
 A big benefit of Go is concurrency. It is built so that concurrency is easy to implement. Using the keyword `go` before calling a function will start the function in a new thread, called a goroutine.
