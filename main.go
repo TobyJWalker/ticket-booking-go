@@ -16,7 +16,7 @@ func main() {
 	var remainingTickets uint = 50
 	var bookings []string // specify a number in the [] to create an array (fixed size)
 
-	// Display value data types
+	// Display value data types (learning purposes)
 	// fmt.Printf("\n\nConference name is of type: %T\n", CONFERENCE_NAME)
 	// fmt.Printf("Conference tickets is of type: %T\n", CONFERENCE_TICKETS)
 	// fmt.Printf("Remaining tickets is of type: %T\n\n", remainingTickets)
@@ -34,17 +34,7 @@ func main() {
 		var userTickets int
 
 		// Get user input
-		fmt.Print("\nPlease enter your first name: ")
-		fmt.Scanln(&firstName) // & is used to get the memory address of the variable
-
-		fmt.Print("Please enter your last name: ")
-		fmt.Scanln(&lastName) 
-
-		fmt.Print("Please enter your email address: ")
-		fmt.Scanln(&emailAddress) 
-
-		fmt.Print("Please enter the number of tickets you would like to purchase: ")
-		fmt.Scanln(&userTickets)
+		firstName, lastName, emailAddress, userTickets = getUserDetails()
 
 		// Validate user input
 		if !isValidDetails(firstName, lastName, emailAddress, userTickets) {
@@ -64,7 +54,6 @@ func main() {
 		// Add name to bookings slice
 		bookings = append(bookings, firstName + " " + lastName)
 
-
 		// Display user input
 		fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
 		fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
@@ -75,20 +64,8 @@ func main() {
 		// Display amount of bookings
 		fmt.Printf("\nThere are %d bookings.\n", len(bookings))
 
-		// Get a list of the first names of bookings (for privacy)
-		firstNames := []string{}
-
-		for _, booking := range bookings { // _ is used to ignore the index value given with range
-
-			// Get the first name of the booking and add to slice
-			var splitNames = strings.Split(booking, " ")
-			firstNames = append(firstNames, splitNames[0])
-			
-		}
-
-		// Display list of booking first names
-		fmt.Println("\nBookings:")
-		fmt.Printf("%s\n", firstNames)
+		// Display bookings
+		displayBookings(bookings)
 		
 	}
 }
@@ -98,6 +75,32 @@ func greetUsers(conferenceName string, remainingTickets uint, totalTickets uint)
 	fmt.Printf("Welcome to %s booking application.\n", conferenceName)
 	fmt.Printf("There are %d total spaces available and %d remaining.\n", totalTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend our conference!")
+}
+
+// Fnction to get user input
+func getUserDetails() (string, string, string, int) {
+
+	// Initialise user input variable
+	var firstName string
+	var lastName string
+	var emailAddress string
+	var userTickets int
+
+	// Get user input
+	fmt.Print("\nPlease enter your first name: ")
+	fmt.Scanln(&firstName) // & is used to get the memory address of the variable
+
+	fmt.Print("Please enter your last name: ")
+	fmt.Scanln(&lastName) 
+
+	fmt.Print("Please enter your email address: ")
+	fmt.Scanln(&emailAddress) 
+
+	fmt.Print("Please enter the number of tickets you would like to purchase: ")
+	fmt.Scanln(&userTickets)
+
+	// Return all the data
+	return firstName, lastName, emailAddress, userTickets
 }
 
 // Function to validate user input, tell them what is wrong and return a boolean
@@ -131,4 +134,23 @@ func isValidDetails(firstName string, lastName string, emailAddress string, user
 	}
 
 	return true
+}
+
+// Function to display bookings
+func displayBookings(bookings []string) {
+
+	// Get a list of the first names of bookings (for privacy)
+	firstNames := []string{}
+
+	for _, booking := range bookings { // _ is used to ignore the index value given with range
+
+		// Get the first name of the booking and add to slice
+		var splitNames = strings.Split(booking, " ")
+		firstNames = append(firstNames, splitNames[0])
+		
+	}
+
+	// Display list of booking first names
+	fmt.Println("\nBookings:")
+	fmt.Printf("%s\n", firstNames)
 }
