@@ -1,8 +1,7 @@
 package main // Main package
 
 import (
-	"fmt"     // Import fmt package for printing etc
-	"strings" // Import strings package for string manipulation
+	"fmt" // Import fmt package for printing etc
 )
 
 // Package level constants
