@@ -58,4 +58,6 @@ go run .
 
 A big benefit of Go is concurrency. It is built so that concurrency is easy to implement. Using the keyword `go` before calling a function will start the function in a new thread, called a goroutine.
 
-A thread will run until it is finished, or the main thread finishes. To allow for synchronisation with the main thread, the `sync` package can be used to create a `Waitgroup`. A `Waitgroup` acts as a counter for the main thread so that it can keep track of whether all goroutines have finished. This is done by calling `wg.Add(1)` before starting a goroutine, and `wg.Done()` at the end of the goroutine. The main thread can then call `wg.Wait()` to wait for all goroutines to finish.
+The benefit of Goroutines compared to traditional threading methods in languages are that they are lightweight and much easier to initialise. They are also managed by the Go runtime, so the developer does not need to worry about managing them.
+
+A goroutine will run until it is finished, or the main thread finishes. To allow for synchronisation with the main thread, the `sync` package can be used to create a `Waitgroup`. A `Waitgroup` acts as a counter for the main thread so that it can keep track of whether all goroutines have finished. This is done by calling `wg.Add(1)` before starting a goroutine, and `wg.Done()` at the end of the goroutine. The main thread can then call `wg.Wait()` to wait for all goroutines to finish.
