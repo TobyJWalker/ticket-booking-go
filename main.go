@@ -37,7 +37,7 @@ func main() {
 		firstName, lastName, emailAddress, userTickets = getUserDetails()
 
 		// Validate user input
-		if !isValidDetails(firstName, lastName, emailAddress, userTickets, int(remainingTickets)) {
+		if !isValidInput(firstName, lastName, emailAddress, userTickets, int(remainingTickets)) {
 			continue // continue to the next iteration of the loop
 		}
 
@@ -97,7 +97,7 @@ func getUserDetails() (string, string, string, int) {
 }
 
 // Function to validate user input, tell them what is wrong and return a boolean
-func isValidDetails(firstName string, lastName string, emailAddress string, userTickets int, remainingTickets int) bool {
+func isValidInput(firstName string, lastName string, emailAddress string, userTickets int, remainingTickets int) bool {
 
 	// Name validation, must be at least 2 characters long
 	isInvalidName := len(firstName) < 2 || len(lastName) < 2
