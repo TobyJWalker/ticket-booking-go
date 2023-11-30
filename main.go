@@ -37,7 +37,7 @@ func main() {
 		}
 
 		// Get remaining tickets
-		remainingTickets = getRemainingTickets(userTickets, CONFERENCE_TICKETS)
+		remainingTickets = getRemainingTickets(userTickets, remainingTickets)
 
 		// Process booking
 		bookings = processBooking(firstName, lastName, emailAddress, userTickets, bookings)
