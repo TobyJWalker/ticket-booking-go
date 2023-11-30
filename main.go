@@ -16,11 +16,6 @@ func main() {
 	var remainingTickets uint = 50
 	var bookings []string // specify a number in the [] to create an array (fixed size)
 
-	// Display value data types (learning purposes)
-	// fmt.Printf("\n\nConference name is of type: %T\n", CONFERENCE_NAME)
-	// fmt.Printf("Conference tickets is of type: %T\n", CONFERENCE_TICKETS)
-	// fmt.Printf("Remaining tickets is of type: %T\n\n", remainingTickets)
-
 	// Display welcome message and ticket information
 	greetUsers(CONFERENCE_NAME, remainingTickets, CONFERENCE_TICKETS)
 
