@@ -37,14 +37,7 @@ func main() {
 		firstName, lastName, emailAddress, userTickets = getUserDetails()
 
 		// Validate user input
-		if !isValidDetails(firstName, lastName, emailAddress, userTickets) {
-			continue // continue to the next iteration of the loop
-		}
-
-		// Check if there are enough tickets remaining
-		if userTickets > int(remainingTickets) {
-			fmt.Printf("\nSorry, there are only %d tickets remaining.\n", remainingTickets)
-			fmt.Printf("Please try again.\n")
+		if !isValidDetails(firstName, lastName, emailAddress, userTickets, int(remainingTickets)) {
 			continue // continue to the next iteration of the loop
 		}
 
@@ -104,7 +97,7 @@ func getUserDetails() (string, string, string, int) {
 }
 
 // Function to validate user input, tell them what is wrong and return a boolean
-func isValidDetails(firstName string, lastName string, emailAddress string, userTickets int) bool {
+func isValidDetails(firstName string, lastName string, emailAddress string, userTickets int, remainingTickets int) bool {
 
 	// Name validation, must be at least 2 characters long
 	isInvalidName := len(firstName) < 2 || len(lastName) < 2
@@ -129,6 +122,13 @@ func isValidDetails(firstName string, lastName string, emailAddress string, user
 
 	if isInvalidTicketNumber {
 		fmt.Printf("\nSorry, you must book at least 1 ticket.\n")
+		fmt.Printf("Please try again.\n")
+		return false
+	}
+
+	// Check if there are enough tickets remaining
+	if userTickets > remainingTickets {
+		fmt.Printf("\nSorry, there are only %d tickets remaining.\n", remainingTickets)
 		fmt.Printf("Please try again.\n")
 		return false
 	}
