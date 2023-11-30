@@ -9,7 +9,7 @@ import (
 const CONFERENCE_NAME = "Go Conference"
 const CONFERENCE_TICKETS uint = 50
 
-// Package level variables
+// Package level variables (not good practice but for the sake of this example)
 var remainingTickets uint = 50
 var bookings []string // specify a number in the [] to create an array (fixed size)
 
