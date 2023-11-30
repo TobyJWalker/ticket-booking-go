@@ -10,7 +10,7 @@ func main() {
 
 	// Initialise globals
 	const CONFERENCE_NAME = "Go Conference"
-	const CONFERENCE_TICKETS int = 50
+	const CONFERENCE_TICKETS uint = 50
 
 	// Initialise variables
 	var remainingTickets uint = 50
@@ -21,9 +21,7 @@ func main() {
 	// fmt.Printf("Remaining tickets is of type: %T\n\n", remainingTickets)
 
 	// Display welcome message and ticket information
-	fmt.Printf("Welcome to %s booking application.\n", CONFERENCE_NAME)
-	fmt.Printf("There are %d total spaces available and %d remaining.\n", CONFERENCE_TICKETS, remainingTickets)
-	fmt.Println("Get your tickets here to attend our conference!")
+	greetUsers(CONFERENCE_NAME, remainingTickets, CONFERENCE_TICKETS)
 
 	// Initialise booking slice
 	var bookings []string // specify a number in the [] to create an array (fixed size)
@@ -119,4 +117,9 @@ func main() {
 	}
 }
 
-func 
+// Function to greet users
+func greetUsers(conferenceName string, remainingTickets uint, totalTickets uint) {
+	fmt.Printf("Welcome to %s booking application.\n", conferenceName)
+	fmt.Printf("There are %d total spaces available and %d remaining.\n", totalTickets, remainingTickets)
+	fmt.Println("Get your tickets here to attend our conference!")
+}
