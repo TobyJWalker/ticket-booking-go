@@ -1,7 +1,8 @@
 package main // Main package
 
 import (
-	"fmt" // Import fmt package for printing etc
+	"fmt"                      // Import fmt package for printing etc
+	"ticket-booking-go/shared" // Import our shared package
 )
 
 // Package level constants
@@ -31,12 +32,12 @@ func main() {
 		firstName, lastName, emailAddress, userTickets = getUserDetails()
 
 		// Validate user input
-		if !isValidInput(firstName, lastName, emailAddress, userTickets) {
+		if !shared.IsValidInput(firstName, lastName, emailAddress, userTickets, remainingTickets) {
 			continue // continue to the next iteration of the loop
 		}
 
 		// Calculate remaining tickets
-		calculateRemainingTickets(userTickets)
+		calculateremainingTickets(userTickets)
 
 		// Process booking
 		processBooking(firstName, lastName, emailAddress, userTickets)
@@ -45,7 +46,7 @@ func main() {
 		fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
 
 		// Display bookings
-		displayBookings()
+		shared.Displaybookings(bookings)
 		
 	}
 }
@@ -84,7 +85,7 @@ func getUserDetails() (string, string, string, int) {
 }
 
 // Function to get remaining tickets
-func calculateRemainingTickets(userTickets int) {
+func calculateremainingTickets(userTickets int) {
 	remainingTickets = remainingTickets - uint(userTickets)
 }
 
