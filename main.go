@@ -46,7 +46,7 @@ func main() {
 		fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
 
 		// Display bookings
-		shared.Displaybookings(bookings)
+		shared.DisplayBookings(bookings)
 		
 	}
 }
