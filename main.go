@@ -16,9 +16,9 @@ func main() {
 	var remainingTickets uint = 50
 
 	// Display value data types
-	fmt.Printf("\n\nConference name is of type: %T\n", CONFERENCE_NAME)
-	fmt.Printf("Conference tickets is of type: %T\n", CONFERENCE_TICKETS)
-	fmt.Printf("Remaining tickets is of type: %T\n\n", remainingTickets)
+	// fmt.Printf("\n\nConference name is of type: %T\n", CONFERENCE_NAME)
+	// fmt.Printf("Conference tickets is of type: %T\n", CONFERENCE_TICKETS)
+	// fmt.Printf("Remaining tickets is of type: %T\n\n", remainingTickets)
 
 	// Display welcome message and ticket information
 	fmt.Printf("Welcome to %s booking application.\n", CONFERENCE_NAME)
@@ -34,8 +34,8 @@ func main() {
 	var emailAddress string
 	var userTickets uint
 
-	// loop to keep asking for bookings
-	for{
+	// loop to keep asking for bookings whilst tickets are available
+	for remainingTickets > 0{
 
 		// Get user input
 		fmt.Print("\nPlease enter your first name: ")
@@ -49,6 +49,33 @@ func main() {
 
 		fmt.Print("Please enter the number of tickets you would like to purchase: ")
 		fmt.Scanln(&userTickets)
+
+		// Name validation, must be at least 2 characters long
+		isInvalidName := len(firstName) < 2 || len(lastName) < 2
+
+		if isInvalidName {
+			fmt.Printf("\nSorry, your name must be at least 2 characters long.\n")
+			fmt.Printf("Please try again.\n")
+			continue // continue to the next iteration of the loop
+		}
+
+		// Email validation, must contain an @ symbol
+		isInvalidEmail := !strings.Contains(emailAddress, "@")
+
+		if isInvalidEmail {
+			fmt.Printf("\nSorry, your email address must contain an @ symbol.\n")
+			fmt.Printf("Please try again.\n")
+			continue // continue to the next iteration of the loop
+		}
+
+		// Ticket validation, must be at least 1 ticket
+		isInvalidTicketNumber := userTickets < 1
+
+		if isInvalidTicketNumber {
+			fmt.Printf("\nSorry, you must book at least 1 ticket.\n")
+			fmt.Printf("Please try again.\n")
+			continue // continue to the next iteration of the loop
+		}
 
 		// Check if there are enough tickets remaining
 		if userTickets > remainingTickets {
@@ -88,15 +115,8 @@ func main() {
 		// Display list of booking first names
 		fmt.Println("\nBookings:")
 		fmt.Printf("%s\n", firstNames)
-
-		// Check if there are any remaining tickets (var not needed, for edu purposes)
-		noTicketsRemaining := remainingTickets == 0
-
-		// Stop the program if there are no tickets remaining
-		if noTicketsRemaining {
-			fmt.Println("\nThere are no more tickets remaining. Thank you for your interest!")
-			break // break out of the loop
-		}
 		
 	}
 }
+
+func 
