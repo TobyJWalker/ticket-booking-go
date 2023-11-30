@@ -19,14 +19,14 @@ func main() {
 	// Display welcome message and ticket information
 	greetUsers(CONFERENCE_NAME, remainingTickets, CONFERENCE_TICKETS)
 
+	// Initialise user input variable
+	var firstName string
+	var lastName string
+	var emailAddress string
+	var userTickets int
+
 	// loop to keep asking for bookings whilst tickets are available
 	for remainingTickets > 0 {
-
-		// Initialise user input variable
-		var firstName string
-		var lastName string
-		var emailAddress string
-		var userTickets int
 
 		// Get user input
 		firstName, lastName, emailAddress, userTickets = getUserDetails()
@@ -36,15 +36,11 @@ func main() {
 			continue // continue to the next iteration of the loop
 		}
 
-		// Calculate remaining tickets
-		remainingTickets = remainingTickets - uint(userTickets)
+		// Get remaining tickets
+		remainingTickets = getRemainingTickets(userTickets, CONFERENCE_TICKETS)
 
-		// Add name to bookings slice
-		bookings = append(bookings, firstName + " " + lastName)
-
-		// Display user input
-		fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
-		fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
+		// Process booking
+		bookings = processBooking(firstName, lastName, emailAddress, userTickets, bookings)
 
 		// Display remaining tickets
 		fmt.Printf("\nThere are %d tickets remaining.\n", remainingTickets)
@@ -126,6 +122,24 @@ func isValidInput(firstName string, lastName string, emailAddress string, userTi
 	}
 
 	return true
+}
+
+// Function to get remaining tickets
+func getRemainingTickets(userTickets int, totalTickets uint) uint {
+	return totalTickets - uint(userTickets)
+}
+
+// Function to process booking
+func processBooking(firstName string, lastName string, emailAddress string, userTickets int, bookings []string) []string {
+
+	// Add name to bookings slice
+	bookings = append(bookings, firstName + " " + lastName)
+
+	// Display user input
+	fmt.Printf("\nThank you %s, you have booked %d tickets.\n", firstName, userTickets)
+	fmt.Printf("A confirmation email has been sent to %s.\n", emailAddress)
+
+	return bookings
 }
 
 // Function to display bookings
