@@ -132,5 +132,5 @@ func sendTicket(booking UserData) {
 	// Display ticket information
 	fmt.Println("\n#############################################")
 	fmt.Printf("\nSending ticket to %s.\n\n%s", booking.email_address, ticket)
-	fmt.Println("\n#############################################")
+	fmt.Println("\n\n#############################################")
 }
